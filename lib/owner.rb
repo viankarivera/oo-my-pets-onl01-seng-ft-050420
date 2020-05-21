@@ -48,6 +48,7 @@ class Owner
 
   def sell_pets
     @pets.each do |type, name_array|
+      binding.pry
       name_array.each do |pet|
         pet.mood = "nervous"
         #name_array.delete(pet)
