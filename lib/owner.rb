@@ -49,13 +49,13 @@ class Owner
     self.dogs.each do |dog|
       dog.owner = nil
       dog.mood = "nervous"
-    end 
+    end
     self.cats.each do |cats|
       cats.owner = nil
       cats.mood = "nervous"
-    end 
+    end
       #iterate and look at each dog and for each dog we want to change to nervous and set their owner to nil
-    #same for cats 
+    #same for cats
 
   end
 
