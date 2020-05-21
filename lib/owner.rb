@@ -18,7 +18,7 @@ class Owner
 
   def cats
     Cat.all.select {|cat| cat.owner == self}
-  end 
+  end
 
   def buy_cat(cat_name)
     @pets[:cats] << Cat.new(cat_name, self)
