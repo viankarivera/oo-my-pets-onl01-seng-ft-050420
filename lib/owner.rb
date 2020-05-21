@@ -1,3 +1,5 @@
+require "pry"
+
 class Owner
   # code goes here
   attr_accessor :pets
@@ -5,10 +7,9 @@ class Owner
 
   @@owners = []
 
-  def initialize(name, pets = {:dogs => [], :cats => []})
+  def initialize(name)
     @name = name
     @species = "human"
-    @pets = pets
     @@owners << self
   end
 
@@ -16,38 +17,50 @@ class Owner
     "I am a #{@species}."
   end
 
+  def cats
+    Cat.all.select {|cat| cat.owner == self}
+  end
+
   def buy_cat(cat_name)
-    @pets[:cats] << Cat.new(cat_name)
+    Cat.new(cat_name, self)
+  end
+
+  def dogs
+    Dog.all.select {|dog| dog.owner == self}
   end
 
   def buy_dog(dog_name)
-    @pets[:dogs] << Dog.new(dog_name)
+    Dog.new(dog_name, self)
   end
 
   def walk_dogs
-    @pets[:dogs].each do |dog|
+    dogs.each do |dog|
       dog.mood = "happy"
     end
   end
 
-  def play_with_cats
-    @pets[:cats].each do |cat|
+  def feed_cats
+    cats.each do |cat|
       cat.mood = "happy"
     end
   end
 
   def sell_pets
-    @pets.each do |type, name_array|
-      name_array.each do |pet|
-        pet.mood = "nervous"
-        #name_array.delete(pet)
-      end
+    self.dogs.each do |dog|
+      dog.owner = nil
+      dog.mood = "nervous"
     end
-    @pets = {}
+    self.cats.each do |cats|
+      cats.owner = nil
+      cats.mood = "nervous"
+    end
+      #iterate and look at each dog and for each dog we want to change to nervous and set their owner to nil
+    #same for cats
+
   end
 
   def list_pets
-    "I have #{@pets[:dogs].length} dog(s), and #{@pets[:cats].length} cat(s)."
+    "I have #{dogs.length} dog(s), and #{cats.length} cat(s)."
   end
 
   def self.all
