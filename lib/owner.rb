@@ -26,6 +26,7 @@ class Owner
 
   def dogs
     Dog.all.select {|dog| dog.owner == self}
+  end 
 
   def buy_dog(dog_name)
     @pets[:dogs] << Dog.new(dog_name)
