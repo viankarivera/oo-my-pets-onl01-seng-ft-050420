@@ -47,18 +47,12 @@ class Owner
   end
 
   def sell_pets
-    @pets.each do |type, name_array|
-      binding.pry
-      name_array.each do |pet|
-        pet.mood = "nervous"
-        #name_array.delete(pet)
-      end
-    end
-    @pets = {}
+    self.dogs 
+      
   end
 
   def list_pets
-    "I have #{@pets[:dogs].length} dog(s), and #{@pets[:cats].length} cat(s)."
+    "I have #{dogs.length} dog(s), and #{cats.length} cat(s)."
   end
 
   def self.all
