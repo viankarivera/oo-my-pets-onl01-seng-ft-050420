@@ -46,7 +46,8 @@ class Owner
   end
 
   def sell_pets
-    self.dogs
+    self.dogs #iterate and look at each dog and for each dog we want to change to nervous and set their owner to nil
+    #same for cats 
 
   end
 
