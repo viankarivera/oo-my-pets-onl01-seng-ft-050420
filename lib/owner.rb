@@ -46,7 +46,15 @@ class Owner
   end
 
   def sell_pets
-    self.dogs #iterate and look at each dog and for each dog we want to change to nervous and set their owner to nil
+    self.dogs.each do |dog|
+      dog.owner = nil
+      dog.mood = "nervous"
+    end 
+    self.cats.each do |cats|
+      cats.owner = nil
+      cats.mood = "nervous"
+    end 
+      #iterate and look at each dog and for each dog we want to change to nervous and set their owner to nil
     #same for cats 
 
   end
