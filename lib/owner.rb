@@ -47,8 +47,8 @@ class Owner
   end
 
   def sell_pets
-    self.dogs 
-      
+    self.dogs
+
   end
 
   def list_pets
